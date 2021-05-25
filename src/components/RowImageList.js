@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import {StyleSheet, View, Dimensions, Image, FlatList} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 const win = Dimensions.get('window');
 
@@ -12,9 +13,10 @@ const RowImageList = props => {
 
     return (
       <View style={styles.imageContainer}>
-        <Image
-          source={{uri: item.download_url}}
+        <FastImage
+          source={{uri: item.download_url, priority: FastImage.priority.normal}}
           style={{aspectRatio: aspectRatio, width: win.width}}
+          resizeMode={FastImage.resizeMode.contain}
         />
       </View>
     );
